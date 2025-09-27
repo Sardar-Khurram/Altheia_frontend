@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import config from "./config";
 
 // SVG Icons
 const MenuIcon = () => (
@@ -81,7 +82,7 @@ function App() {
     setConversations([...conversations, newConversation]);
 
     try {
-      const { data } = await axios.post("/api/verify", { question: userQuestion });
+      const { data } = await axios.post(`${config.API_BASE_URL}/verify`, { question: userQuestion });
       
       // Update conversation with response
       setConversations(prevConversations => 
